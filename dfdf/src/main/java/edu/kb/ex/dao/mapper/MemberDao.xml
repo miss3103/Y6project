@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.kb.ex.dao.MemberDao">
+	<select id="loginFormDao" resultType="edu.kb.ex.dto.MemberDto">
+		select * from member where id=#{param1, jdbcType=VARCHAR} and pwd=#{param2, jdbcType=VARCHAR}
+	</select>
+	<insert id="signUpDao">
+		insert into member(name, id, pwd, phone, addr_code, addr_main, addr_side) values(#{param1, jdbcType=VARCHAR}, #{param2, jdbcType=VARCHAR}, #{param3, jdbcType=VARCHAR}, #{param4}, #{param5, jdbcType=VARCHAR}, #{param6, jdbcType=VARCHAR}, #{param7, jdbcType=VARCHAR})
+	</insert>
+	<select id="myPageDao" resultType="edu.kb.ex.dto.MemberDto">
+		select * from member where id = #{param1, jdbcType=VARCHAR}
+	</select>
+</mapper>

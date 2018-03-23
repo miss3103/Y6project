@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+.mainTable{
+	border-collapse:collapse;
+    border: 1px solid #dedede;
+}
+
+.tr_b th {
+    background-color: #f2f2f2;
+    color: #262626;
+    text-align: center;
+    border: 1px solid #dedede;
+}
+.th{
+	background: #e8e8e8;
+}
+td{
+	text-align: center;
+}
+th,td{
+	vertical-align: middle !important;
+}
+
+.tab_c{
+	margin-top: -1px;
+}
+
+.pn_mg{
+	margin-top: 2
+}
+
+/* #pgw{ */
+/* 	padding-top: 30px; */
+/* } */
+.c_img{
+	width: 100%;
+	height: 50%;
+}
+
+.text_c{
+	text-align: center;
+}
+
+.text_l{
+	float: left;
+	width: 50%;
+}
+
+img{
+	float: right;
+/* 	width: 30%; */
+}
+
+.img_r{
+	float: right;
+	width: 50%;
+}
+
+.img_goo{
+	width: 430px;
+	float: right;
+}
+
+.img_goo div{
+	background-size: cover;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	width: 210px;
+	height: 240px;
+	float:left;
+	background-position: left;
+	background-image: url("/ex/resources/images/beach.jpg");
+}
+.img_goo div:first-child{
+	background-image: url("/ex/resources/images/pension.jpg") !important; 
+	width: 430px !important;
+	margin-bottom: 10px;
+}
+.img_goo div:last-child{
+	background-image: url("/ex/resources/images/table.jpg") !important;
+	margin-left:10px; 
+}
+.rooms_img img{
+	width: 100%;
+}
+body{
+   position: relative;
+}
+body:after{
+    background-image: url(/ex/resources/images/sunset.jpg);
+    opacity: 0.5;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    content: "";
+    z-index: -1;
+    display: block;
+}
+.navbar{
+	opacity: 0.9;
+}
+.page-header{
+	border-bottom: 1px solid #ddd !important;
+}
+.panel-bg{
+    background-color: rgba(255, 255, 255, 0.9) !important;
+}
+/* #section-1{ */
+/* 	animation-duration:2s; */
+/* } */
+
