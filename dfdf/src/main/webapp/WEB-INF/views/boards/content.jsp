@@ -34,7 +34,7 @@
 		  		<div class="form-group">
 		    		<label for="inputPassword3" class="col-sm-2 control-label"></label>
 		    		<div class="col-sm-10 text-right">
-						<a href="list?page=${page}&btype=${btype}">
+						<a href="list?page=${page}&btype=${btype}"> 
 							<button type="button" class="btn btn-danger">
 								<i class="fa fa-undo" aria-hidden="true"></i>&nbsp;돌아가기
 							</button>
