@@ -1,6 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="/resources/including/header.jsp" />
-
+<script>
+	$(function(){
+// 		$(#animateBtn).click(function(){
+// 			animate('#anim-head', 'bounce');
+// 			animate('#anim-body', 'rubberBand');
+// 			return false;
+// 		});
+		//animate
+		function animate(element, animation){
+			$(element).addClass('animated' + animation);
+			var wait = setTimeout(function(){
+				$(element).removeClass('animated' + animation);
+			}, 1000);
+		}
+	})
+</script>
 	<header class="animated fadeInDown">
 		<div class="text_c">
 			<h1>WELCOME</h1>
@@ -28,15 +43,15 @@
 			<div class="thumbnail"></div>
 		</div>
 	</div>
-	<script>
-		$(function(){
-			function animate(element, animation){
-				$(element).addClass('animated' + animation);
-				var wait = setTimeout(function(){
-					$(element).removeClass('animated' + animation);
-				}, 1000);
-			}
-		})
-	</script>
-	
+	<footer class="animated fadeInUp">
+		<h1>펜션 위치</h1>
+		<div class ="img_r animated fadeInUp" id="section-3">
+			<a href="http://map.daum.net/?urlX=229976&urlY=1534427&urlLevel=4&map_type=TYPE_MAP&map_hybrid=false&SHOWMARK=true" target="_blank">
+				<span style="background:#000;position:absolute;width:25%;opacity:.7;filter:alpha(opacity=70);color:#fff;overflow:hidden;font:12px/1.5 Dotum, '돋움', sans-serif;text-decoration:none;padding:7px 0px 0px 10px; height: 25%;">
+					지도를 클릭하시면 위치정보를 확인하실 수 있습니다.
+				</span>
+				<img width="100%" height="32%" src="http://map2.daum.net/map/mapservice?MX=229976&MY=1534427&SCALE=5&IW=565&IH=308&COORDSTM=WCONGNAMUL" style="border:1px solid #ccc">
+			</a>
+		</div>
+	</footer>
 <jsp:include page="/resources/including/footer.jsp" />
