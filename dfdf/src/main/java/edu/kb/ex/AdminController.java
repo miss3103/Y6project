@@ -1,9 +1,7 @@
 package edu.kb.ex;
 
-import java.net.URI;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.kb.ex.dao.AdminDao;
-import edu.kb.ex.dao.BoardDao;
 
 @Controller
 public class AdminController {
@@ -34,6 +31,7 @@ public class AdminController {
 		AdminDao dao = sqlSession.getMapper(AdminDao.class);
 		
 		model.addAttribute("login_info",dao.confirmAdmin(admin_id, admin_pw));
+		
 		return "admin/loginCheck";
 		
 		
