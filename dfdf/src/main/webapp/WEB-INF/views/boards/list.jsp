@@ -32,9 +32,11 @@
 						</form>
 						<a href="writeForm">
 							<div class="text-right">
-								<button type="submit" class="btn btn-primary">
-									<i class="fa fa-edit" aria-hidden="true"></i>&nbsp;작성하기
-								</button>
+								<c:if test="${btype!=1}">
+									<button type="submit" class="btn btn-primary">
+										<i class="fa fa-edit" aria-hidden="true"></i>&nbsp;작성하기
+									</button>
+								</c:if>
 							</div>
 						</a>
 						<nav class="text-center">
