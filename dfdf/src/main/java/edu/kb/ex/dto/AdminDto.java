@@ -1,6 +1,6 @@
 package edu.kb.ex.dto;
 
-import java.util.ArrayList;
+
 
 public class AdminDto {
 	private String adminId;

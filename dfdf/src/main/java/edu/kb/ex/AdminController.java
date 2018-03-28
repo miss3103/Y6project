@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.kb.ex.dao.AdminDao;
+import edu.kb.ex.dao.BoardDao;
 import edu.kb.ex.dto.AdminDto;
 
 @Controller
@@ -57,19 +58,25 @@ public class AdminController {
 	public String mangerAdmin(Model model,HttpServletRequest request) {
 		AdminDao dao = sqlSession.getMapper(AdminDao.class);
 		AdminDto dto = (AdminDto)httpSession.getAttribute("adminDto");
-
+		
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
 		String command = uri.substring(conPath.length());
 		System.out.println(command);
 		
-
+		int bType=Integer.parseInt(request.getParameter("board_type"));
 
 		if(dto!=null) {
+			
 			String admin_id = dto.getAdminId();
 			String admin_pw = dto.getAdminPw();
+			
 			switch(command) {
 			case "/board_manager":
+				BoardDao board_dao = sqlSession.getMapper(BoardDao.class);
+				model.addAttribute("board_type_list", dao.managerBoard(admin_id));
+				model.addAttribute("list", board_dao.boardList(bType));
+				
 				return "admin/manager/boardManager"; 
 			default : 
 				return "admin/home";

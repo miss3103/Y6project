@@ -29,7 +29,7 @@ public class BoardController {
 
 		page = Integer.parseInt(request.getParameter("page"));
 		btype = Integer.parseInt(request.getParameter("btype"));
-		model.addAttribute("list", dao.boardList(btype,page));
+		model.addAttribute("list", dao.boardList(btype));
 		model.addAttribute("count",dao.boardCount(btype));
 		model.addAttribute("page",page);
 		model.addAttribute("typeName",dao.boardType(btype));

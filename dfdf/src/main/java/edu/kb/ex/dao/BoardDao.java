@@ -7,7 +7,7 @@ import edu.kb.ex.dto.ContentDto;
 
 public interface BoardDao {
 	
-	public ArrayList<BoardDto> boardList(int bType,int page);
+	public ArrayList<BoardDto> boardList(int bType);
 	public String boardType(int bType);
 	public BoardDto boardContent(int bId);
 	public int boardCount(int bType);
