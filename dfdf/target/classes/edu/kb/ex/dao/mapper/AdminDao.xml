@@ -4,5 +4,7 @@
 	<select id="confirmAdmin" resultType="edu.kb.ex.dto.AdminDto">
 		select adminId,adminPw from PENSION_ADMIN where adminId = #{param1} AND adminPw = #{param2}
 	</select>
+	
 
+		
 </mapper>

@@ -2,6 +2,8 @@ package edu.kb.ex;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,17 +12,29 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.kb.ex.dao.AdminDao;
+import edu.kb.ex.dto.AdminDto;
 
 @Controller
 public class AdminController {
 	
+	private HttpSession httpSession;
 	@Autowired
 	private SqlSession sqlSession;
 
 	
 	@RequestMapping("/admin_login")
 	public String adminLogin(Model model , HttpServletRequest request) {
-
+		if(httpSession!=null && httpSession.getAttribute("adminDto")!=null) {
+			return "admin/home";
+		}else
+			return "admin/login";
+	}
+	
+	@RequestMapping("/admin_logout")
+	public String adminLogout(Model model , HttpServletRequest request) {
+		if(httpSession!=null) {
+			httpSession.removeAttribute("adminDto");
+		}
 		return "admin/login";
 	}
 	
@@ -29,12 +43,41 @@ public class AdminController {
 		String admin_id = request.getParameter("id");
 		String admin_pw = request.getParameter("pw");
 		AdminDao dao = sqlSession.getMapper(AdminDao.class);
+		AdminDto dto = dao.confirmAdmin(admin_id, admin_pw);
+
+		if(dto!=null) {
+			httpSession = request.getSession();
+			httpSession.setAttribute("adminDto", dto);
+			return "admin/home";
+		}else
+			return "admin/login";
+
+	}
+	@RequestMapping("/*_manager")
+	public String mangerAdmin(Model model,HttpServletRequest request) {
+		AdminDao dao = sqlSession.getMapper(AdminDao.class);
+		AdminDto dto = (AdminDto)httpSession.getAttribute("adminDto");
+
+		String uri = request.getRequestURI();
+		String conPath = request.getContextPath();
+		String command = uri.substring(conPath.length());
+		System.out.println(command);
 		
-		model.addAttribute("login_info",dao.confirmAdmin(admin_id, admin_pw));
-		
-		return "admin/loginCheck";
-		
-		
+
+
+		if(dto!=null) {
+			String admin_id = dto.getAdminId();
+			String admin_pw = dto.getAdminPw();
+			switch(command) {
+			case "/board_manager":
+				return "admin/manager/boardManager"; 
+			default : 
+				return "admin/home";
+			}
+		}else {
+			return "admin/login";
+		}
+	
 	}
 	
 	

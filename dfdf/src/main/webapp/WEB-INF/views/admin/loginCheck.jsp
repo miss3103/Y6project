@@ -8,7 +8,7 @@
 	<h1>${login_info.adminId}</h1>
 	고객 접속중 ...
 	<c:if test="${login_info.adminId!=null}">
-		로그인 성공
 	</c:if>
+		로그인 실패
 </body>
 </html>
