@@ -16,7 +16,7 @@ td {
 <body>
 	<form action="board_manager" method="GET">
 		
-		<select name="board_type">
+		<select name="bType">
 			<c:forEach items="${board_type_list}" var="type_list">
 				<option value="${type_list.bType}">
 					${type_list.typeName}
@@ -25,15 +25,19 @@ td {
 		</select>
 		<input type="submit" value="실행"/>
 	</form>
-	
 			<table class="table table-hover">
 							<tr>
 								<th>번호</th>
 								<th>제목</th>
 								<th>작성자</th>
 								<th>날짜</th>
-								<th>글작성</th>
+								<th>수정</th>
 								<th>삭제</th>
+							</tr>
+							<tr>
+								<td colspan="6">
+									<a href="write_board">글 작성</a>
+								</td>
 							</tr>
 							<c:forEach items="${list}" var="dto" >
 							<tr>
@@ -41,8 +45,8 @@ td {
 								<td>${dto.bTitle}</td>
 								<td>${dto.bName}</td>
 								<td>${dto.bDate}</td>
-								<td><a href="insert_board">O</a>
-								<td><a href="delete_board">X</a>
+								<td><a href="update_board">글 수정</a>
+								<td><a href="delete_board">글 삭제</a>
 							</tr>
 							</c:forEach>
 						</table>

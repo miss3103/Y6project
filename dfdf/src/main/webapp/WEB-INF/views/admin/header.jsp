@@ -13,19 +13,19 @@
 <table>
 	<tr>
 		<th>
-			<a href="main">메인</a>
+			<a href="../main">메인</a>
 		</th>
 		<th>
-			<a href="main">예약현황</a>
+			<a href="../main">예약현황</a>
 		</th>
 		<th>
-			<a href="main">객실관리</a>
+			<a href="../main">객실관리</a>
 		</th>
 		<th>
-			<a href="board_manager?board_type=1">게시판관리</a>
+			<a href="board_manager?bType=1">게시판관리</a>
 		</th>
 		<th>
-			<a href="admin_logout">로그아웃</a>
+			<a href="logout">로그아웃</a>
 		</th>
 	</tr>
 </table>

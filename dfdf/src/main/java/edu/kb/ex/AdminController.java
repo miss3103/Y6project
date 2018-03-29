@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import edu.kb.ex.dao.AdminDao;
 import edu.kb.ex.dao.BoardDao;
 import edu.kb.ex.dto.AdminDto;
-
+@RequestMapping("/admin")
 @Controller
 public class AdminController {
 	
@@ -23,15 +23,15 @@ public class AdminController {
 	private SqlSession sqlSession;
 
 	
-	@RequestMapping("/admin_login")
+	@RequestMapping("/login")
 	public String adminLogin(Model model , HttpServletRequest request) {
 		if(httpSession!=null && httpSession.getAttribute("adminDto")!=null) {
 			return "admin/home";
 		}else
 			return "admin/login";
 	}
-	
-	@RequestMapping("/admin_logout")
+
+	@RequestMapping("/logout")
 	public String adminLogout(Model model , HttpServletRequest request) {
 		if(httpSession!=null) {
 			httpSession.removeAttribute("adminDto");
@@ -54,38 +54,31 @@ public class AdminController {
 			return "admin/login";
 
 	}
-	@RequestMapping("/*_manager")
+	@RequestMapping("/board_manager")
 	public String mangerAdmin(Model model,HttpServletRequest request) {
-		AdminDao dao = sqlSession.getMapper(AdminDao.class);
-		AdminDto dto = (AdminDto)httpSession.getAttribute("adminDto");
 		
-		String uri = request.getRequestURI();
-		String conPath = request.getContextPath();
-		String command = uri.substring(conPath.length());
-		System.out.println(command);
+		AdminDao admin_dao = sqlSession.getMapper(AdminDao.class);
+		BoardDao board_dao = sqlSession.getMapper(BoardDao.class);
+		AdminDto admin_dto = (AdminDto)httpSession.getAttribute("adminDto");
 		
-		int bType=Integer.parseInt(request.getParameter("board_type"));
-
-		if(dto!=null) {
-			
-			String admin_id = dto.getAdminId();
-			String admin_pw = dto.getAdminPw();
-			
-			switch(command) {
-			case "/board_manager":
-				BoardDao board_dao = sqlSession.getMapper(BoardDao.class);
-				model.addAttribute("board_type_list", dao.managerBoard(admin_id));
-				model.addAttribute("list", board_dao.boardList(bType));
-				
-				return "admin/manager/boardManager"; 
-			default : 
-				return "admin/home";
-			}
+		if(admin_dto!=null) {	
+		String admin_id = admin_dto.getAdminId();
+		
+		int bType=Integer.parseInt(request.getParameter("bType"));
+		
+		model.addAttribute("board_type_list", admin_dao.managerBoard(admin_id));
+		model.addAttribute("list", board_dao.boardList(bType));
+		
+		return "admin/boardManager/list";
+		
 		}else {
 			return "admin/login";
 		}
-	
 	}
+	
+//	@RequestMapping("/update_board")
+//	@RequestMapping("/delete_board")
+//	@RequestMapping("/write_board")
 	
 	
 //	

@@ -25,15 +25,15 @@ public class BoardController {
 	public String list(Model model , HttpServletRequest request) {
 		BoardDao dao = sqlSession.getMapper(BoardDao.class);
 		int page;
-		int btype;
+		int bType;
 
 		page = Integer.parseInt(request.getParameter("page"));
-		btype = Integer.parseInt(request.getParameter("btype"));
-		model.addAttribute("list", dao.boardList(btype));
-		model.addAttribute("count",dao.boardCount(btype));
+		bType = Integer.parseInt(request.getParameter("bType"));
+		model.addAttribute("list", dao.boardList(bType));
+		model.addAttribute("count",dao.boardCount(bType));
 		model.addAttribute("page",page);
-		model.addAttribute("typeName",dao.boardType(btype));
-		model.addAttribute("btype",btype);
+		model.addAttribute("typeName",dao.boardType(bType));
+		model.addAttribute("bType",bType);
 			
 //		case "/review_list":
 //			page = Integer.parseInt(request.getParameter("page"));
@@ -47,13 +47,13 @@ public class BoardController {
 	public String contentView(HttpServletRequest request, Model model) {
 		BoardDao dao = sqlSession.getMapper(BoardDao.class);
 		int page;
-		int btype;
+		int bType;
 
 		page = Integer.parseInt(request.getParameter("page"));
-		btype = Integer.parseInt(request.getParameter("btype"));
+		bType = Integer.parseInt(request.getParameter("bType"));
 		model.addAttribute("content", dao.boardContent(Integer.parseInt(request.getParameter("bId"))));
 		model.addAttribute("page",page);
-		model.addAttribute("btype",btype);
+		model.addAttribute("bType",bType);
 		return "boards/content";
 	}
 
@@ -69,6 +69,7 @@ public class BoardController {
 	@RequestMapping("/write")
 	public String write_view(HttpServletRequest request, Model model) {
 		BoardDao dao = sqlSession.getMapper(BoardDao.class);
+		int bType = Integer.parseInt(request.getParameter("bType"));
 		dao.writeDao(request.getParameter("bName"),request.getParameter("bTitle"),request.getParameter("bContent"));
 		
 		return "redirect:review";

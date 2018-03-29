@@ -32,7 +32,7 @@
 						</form>
 						<a href="writeForm">
 							<div class="text-right">
-								<c:if test="${btype!=1}">
+								<c:if test="${bType!=1}">
 									<button type="submit" class="btn btn-primary">
 										<i class="fa fa-edit" aria-hidden="true"></i>&nbsp;작성하기
 									</button>
@@ -42,17 +42,17 @@
 						<nav class="text-center">
 						<ul class="pagination">
 							<li>
-								<a href="list?page=${page>1?(page-1):1}&btype=${btype}" aria-label="Previous">
+								<a href="list?page=${page>1?(page-1):1}&bType=${bType}" aria-label="Previous">
 									<span aria-hidden="true">&laquo;</span>
 								</a>
 						    </li>
 						    	<li>
 								    <c:forEach var="i" begin="1" end="${count/20+(count%20>0?1:0)}" step="1">
-								    <a href="list?page=${i}&btype=${btype}">${i}</a>
+								    <a href="list?page=${i}&bType=${bType}">${i}</a>
 								    </c:forEach>
 						    	</li>
 						    <li>
-								<a href="list?page=${page<count/20+(count%20>0?1:0)?page+1:page}&btype=${btype}" aria-label="Next">
+								<a href="list?page=${page<count/20+(count%20>0?1:0)?page+1:page}&bType=${bType}" aria-label="Next">
 									<span aria-hidden="true">&raquo;</span>
 								</a>
 							</li>

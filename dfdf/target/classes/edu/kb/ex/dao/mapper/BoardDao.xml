@@ -19,6 +19,10 @@
 		select count(bId)  from PENSION_BOARD WHERE bType=#{param1}
 	</select>
 	
+	<insert id="writeBoard">
+		insert into PENSION_BOARD(bId,bName,bTitle,bContent,bDate,bType) values(BOARD_TYPE1_SEQ.nextval,#{param1},#{param2},#{param3},sysdate,#{param4})
+	</insert>
+	
 	
 	<select id="boardcountDao" resultType="edu.kb.ex.dto.ContentDto"> 
 		select count(*) FROM mvc_board

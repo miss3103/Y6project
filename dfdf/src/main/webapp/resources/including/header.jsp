@@ -37,7 +37,7 @@
 						<span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand active" href="index">PENSION</a>
-					<a class="navbar-brand active" href="admin_login">관리자</a>
+					<a class="navbar-brand active" href="admin/login">관리자</a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -57,11 +57,11 @@
 							<ul class="dropdown-menu" role="menu">
 								<li>
 							
-								<a href="list?page=1&btype=1">공지사항</a></li>
+								<a href="list?page=1&bType=1">공지사항</a></li>
 								<li class="divider"></li>
-								<li><a href="list?page=1&btype=2">숙박후기</a></li>
+								<li><a href="list?page=1&bType=2">숙박후기</a></li>
 								<li class="divider"></li>
-								<li><a href="list?page=1&btype=3">QnA</a></li>
+								<li><a href="list?page=1&bType=3">QnA</a></li>
 							</ul>
 						</li>
 					</ul>
