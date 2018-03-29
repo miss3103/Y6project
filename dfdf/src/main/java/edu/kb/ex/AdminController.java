@@ -75,7 +75,10 @@ public class AdminController {
 			return "admin/login";
 		}
 	}
-	
+	@RequestMapping("/write_board")
+	public String writeBoard(Model model,HttpServletRequest request) {
+		return "admin/boardManager/write";
+	}
 //	@RequestMapping("/update_board")
 //	@RequestMapping("/delete_board")
 //	@RequestMapping("/write_board")

@@ -11,7 +11,8 @@ public interface BoardDao {
 	public String boardType(int bType);
 	public BoardDto boardContent(int bId);
 	public int boardCount(int bType);
-	public void writeBoard(String bName, String bTitle, String bContent, int bType);
+	public void writeBoard(String seqName,String bName, String bTitle, String bContent, int bType);
+	
 	
 	public ArrayList<ContentDto> listDao();
 	public void writeDao(String bName, String bTitle, String bContent);

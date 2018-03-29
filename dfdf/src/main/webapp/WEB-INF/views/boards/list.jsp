@@ -30,7 +30,7 @@
 							</c:forEach>
 						</table>
 						</form>
-						<a href="writeForm">
+						<a href="writeForm?bType=${bType}">
 							<div class="text-right">
 								<c:if test="${bType!=1}">
 									<button type="submit" class="btn btn-primary">

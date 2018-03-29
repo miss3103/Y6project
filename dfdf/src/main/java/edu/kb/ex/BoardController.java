@@ -65,14 +65,23 @@ public class BoardController {
 //		
 //		return "boards/reviewBoard/list";
 //	}
-	
-	@RequestMapping("/write")
-	public String write_view(HttpServletRequest request, Model model) {
+	@RequestMapping("/writeForm")
+	public String writeForm(HttpServletRequest request, Model model) {
 		BoardDao dao = sqlSession.getMapper(BoardDao.class);
 		int bType = Integer.parseInt(request.getParameter("bType"));
-		dao.writeDao(request.getParameter("bName"),request.getParameter("bTitle"),request.getParameter("bContent"));
+		model.addAttribute("typeName",dao.boardType(bType));
+		model.addAttribute("bType",bType);
+		return "/boards/writeForm";
+	}
+	@RequestMapping("/write")
+	public String write_view(HttpServletRequest request, Model model) {
+		BoardDao board_dao = sqlSession.getMapper(BoardDao.class);
+		int bType = Integer.parseInt(request.getParameter("bType"));
 		
-		return "redirect:review";
+		board_dao.writeBoard(request.getParameter("bName"),request.getParameter("bTitle"),request.getParameter("bContent"),bType);
+		model.addAttribute("bType",bType);
+		model.addAttribute("page",1);
+		return "redirect:list";
 	}
 	
 	

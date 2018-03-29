@@ -10,12 +10,12 @@
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">숙박후기</h1>
+					<h1 class="page-header">${typeName}</h1>
 				</div><!-- /.col-lg-12 -->
 			</div><!-- /.row -->
 			<div class="row">
 				<div class="col-lg-12">
-	<form class="form-horizontal" action="write" method="post">
+	<form class="form-horizontal" action="write?bType=${bType}" method="post">
 		<div class="panel panel-default">
   			<div class="panel-body">
 		  		<div class="form-group">
@@ -30,16 +30,16 @@
 		      			<input type="text" class="form-control" id="inputPassword3" placeholder="writer" name="bName">
 		    		</div>
 		  		</div>
-		  		<div class="form-group">
-		    		<label for="inputPassword3" class="col-sm-2 control-label">첨부파일</label>
-		    		<div class="col-sm-10">
-		      			<input type="file" class="form-control" id="inputPassword3" placeholder="writer" name="bName">
-		    		</div>
-		  		</div>
+<!-- 		  		<div class="form-group"> -->
+<!-- 		    		<label for="inputPassword3" class="col-sm-2 control-label">첨부파일</label> -->
+<!-- 		    		<div class="col-sm-10"> -->
+<!-- 		      			<input type="file" class="form-control" id="inputPassword3" placeholder="writer" name="bName"> -->
+<!-- 		    		</div> -->
+<!-- 		  		</div> -->
 		  		<div class="form-group">
 		    		<label for="inputPassword3" class="col-sm-2 control-label">본문</label>
 		    		<div class="col-sm-10">
-		      			<textarea name="editor1" id="editor1" rows="10" cols="80"></textarea>
+		      			<input type="text" class="form-control" id="inputPassword3" placeholder="writer" name="bContent">
 		    		</div>
 		  		</div>
 		  		<div class="form-group">

@@ -4,14 +4,24 @@ public class BoardManagerDto {
 	private String adminId;
 	private int bType;
 	private String typeName;
+	private String seqName;
 	
 	
+	public String getSeqName() {
+		return seqName;
+	}
+
+	public void setSeqName(String seqName) {
+		this.seqName = seqName;
+	}
+
 	public BoardManagerDto() {}
 	
-	public BoardManagerDto(String adminId, int bType, String typeName) {
+	public BoardManagerDto(String adminId, int bType, String typeName ,String seqName) {
 		this.adminId = adminId;
 		this.bType = bType;
 		this.typeName = typeName;
+		this.seqName = seqName;
 	}
 	public String getAdminId() {
 		return adminId;
