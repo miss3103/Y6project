@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.woone.goo.DAO.InfoDao">
+	<insert id="Info">
+		insert into info (idx,phone,name,pay,check_in,check_out,personnel,roomname) values (1,#{param1},#{param2, jdbcType=VARCHAR},#{param3},#{param4},#{param5},#{param6},#{param7,jdbcType=VARCHAR}) 
+	</insert>
+	<select id="Infodata" resultType="com.woone.goo.DTO.InfoDto">
+		select idx,name,phone,pay,check_in,check_out,roomname from info where name = #{param1} and phone = #{param2}
+	</select>
+	
+	<delete id = "deleteinfo">
+		delete from info where idx=#{param1}
+	</delete>
+</mapper> 
