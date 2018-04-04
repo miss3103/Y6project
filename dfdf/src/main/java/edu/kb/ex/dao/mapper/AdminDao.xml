@@ -6,8 +6,8 @@
 		select adminId,adminPw from PENSION_ADMIN where adminId = #{param1} AND adminPw = #{param2}
 	</select>
 	
-	<select id="managerBoard" resultType="edu.kb.ex.dto.BoardManagerDto">
-		select bType,typeName,seqName from BOARD_TYPE where adminId = #{param1}	order by bType asc
+	<select id="managerBoard" resultType="edu.kb.ex.dto.BoardTypeDto">
+		select bType,typeName from BOARD_TYPE where adminId = #{param1}	order by bType asc
 	</select>
 	
 	

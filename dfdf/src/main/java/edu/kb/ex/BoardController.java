@@ -51,8 +51,9 @@ public class BoardController {
 
 		page = Integer.parseInt(request.getParameter("page"));
 		bType = Integer.parseInt(request.getParameter("bType"));
-		model.addAttribute("content", dao.boardContent(Integer.parseInt(request.getParameter("bId"))));
+		model.addAttribute("content", dao.boardContent(Integer.parseInt(request.getParameter("bId")),bType));
 		model.addAttribute("page",page);
+		model.addAttribute("typeName",dao.boardType(bType));
 		model.addAttribute("bType",bType);
 		return "boards/content";
 	}
@@ -77,8 +78,9 @@ public class BoardController {
 	public String write_view(HttpServletRequest request, Model model) {
 		BoardDao board_dao = sqlSession.getMapper(BoardDao.class);
 		int bType = Integer.parseInt(request.getParameter("bType"));
-		
-		board_dao.writeBoard(request.getParameter("bName"),request.getParameter("bTitle"),request.getParameter("bContent"),bType);
+		String seqName = board_dao.boardTypeDto(bType).getSeqName();
+		System.out.println(seqName+".nextval");
+		board_dao.writeBoard(seqName+".nextval",request.getParameter("bName"),request.getParameter("bTitle"),request.getParameter("bContent"),bType);
 		model.addAttribute("bType",bType);
 		model.addAttribute("page",1);
 		return "redirect:list";

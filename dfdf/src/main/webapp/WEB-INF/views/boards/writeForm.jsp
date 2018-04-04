@@ -45,7 +45,7 @@
 		  		<div class="form-group">
 		    		<label for="inputPassword3" class="col-sm-2 control-label"></label>
 		    		<div class="col-sm-10 text-right">
-						<a href="review"><button type="button" class="btn btn-danger">돌아가기</button></a>
+						<a href="list?bType=${bType}&page=1"><button type="button" class="btn btn-danger">돌아가기</button></a>
 						<input type="submit" value="글 올리기" class="btn btn-primary" />
 					</div>
 		    	</div>

@@ -3,14 +3,16 @@ package edu.kb.ex.dao;
 import java.util.ArrayList;
 
 import edu.kb.ex.dto.BoardDto;
+import edu.kb.ex.dto.BoardTypeDto;
 import edu.kb.ex.dto.ContentDto;
 
 public interface BoardDao {
 	
 	public ArrayList<BoardDto> boardList(int bType);
 	public String boardType(int bType);
-	public BoardDto boardContent(int bId);
+	public BoardDto boardContent(int bId , int bType);
 	public int boardCount(int bType);
+	public BoardTypeDto boardTypeDto(int bType);
 	public void writeBoard(String seqName,String bName, String bTitle, String bContent, int bType);
 	
 	

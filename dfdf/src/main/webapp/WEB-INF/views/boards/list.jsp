@@ -23,7 +23,7 @@
 							<tr>
 								<td>${dto.bId}</td>
 
-								<td><a href="content?bId=${dto.bId}&page=${page}&btype=${btype}">${dto.bTitle}</a></td>
+								<td><a href="content?bId=${dto.bId}&page=${page}&bType=${bType}">${dto.bTitle}</a></td>
 								<td>${dto.bName}</td>
 								<td>${dto.bDate}</td>
 							</tr>
@@ -32,7 +32,8 @@
 						</form>
 						<a href="writeForm?bType=${bType}">
 							<div class="text-right">
-								<c:if test="${bType!=1}">
+							${adminDto}
+								<c:if test="${bType!=1||adminId!=null}">
 									<button type="submit" class="btn btn-primary">
 										<i class="fa fa-edit" aria-hidden="true"></i>&nbsp;작성하기
 									</button>
@@ -52,7 +53,7 @@
 								    </c:forEach>
 						    	</li>
 						    <li>
-								<a href="list?page=${page<count/20+(count%20>0?1:0)?page+1:page}&bType=${bType}" aria-label="Next">
+								<a href="list?page=${page<((count-count%20)/20+(count%20>0?1:0))?page+1:page}&bType=${bType}" aria-label="Next">
 									<span aria-hidden="true">&raquo;</span>
 								</a>
 							</li>

@@ -25,7 +25,7 @@ public class AdminController {
 	
 	@RequestMapping("/login")
 	public String adminLogin(Model model , HttpServletRequest request) {
-		if(httpSession!=null && httpSession.getAttribute("adminDto")!=null) {
+		if(httpSession!=null && httpSession.getAttribute("adminId")!=null) {
 			return "admin/home";
 		}else
 			return "admin/login";
@@ -34,7 +34,7 @@ public class AdminController {
 	@RequestMapping("/logout")
 	public String adminLogout(Model model , HttpServletRequest request) {
 		if(httpSession!=null) {
-			httpSession.removeAttribute("adminDto");
+			httpSession.removeAttribute("adminId");
 		}
 		return "admin/login";
 	}
@@ -48,7 +48,7 @@ public class AdminController {
 
 		if(dto!=null) {
 			httpSession = request.getSession();
-			httpSession.setAttribute("adminDto", dto);
+			httpSession.setAttribute("adminId", dto.getAdminId());
 			return "admin/home";
 		}else
 			return "admin/login";
@@ -59,11 +59,9 @@ public class AdminController {
 		
 		AdminDao admin_dao = sqlSession.getMapper(AdminDao.class);
 		BoardDao board_dao = sqlSession.getMapper(BoardDao.class);
-		AdminDto admin_dto = (AdminDto)httpSession.getAttribute("adminDto");
+		String admin_id = (String)httpSession.getAttribute("adminId");
 		
-		if(admin_dto!=null) {	
-		String admin_id = admin_dto.getAdminId();
-		
+		if(admin_id!=null) {	
 		int bType=Integer.parseInt(request.getParameter("bType"));
 		
 		model.addAttribute("board_type_list", admin_dao.managerBoard(admin_id));

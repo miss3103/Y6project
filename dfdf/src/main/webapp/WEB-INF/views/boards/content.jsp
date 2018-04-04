@@ -5,7 +5,7 @@
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">공지사항</h1>
+					<h1 class="page-header">${typeName}</h1>
 				</div><!-- /.col-lg-12 -->
 			</div><!-- /.row -->
 			<div class="row">
@@ -22,7 +22,7 @@
 		  		<div class="form-group">
 		    		<label for="inputPassword3" class="col-sm-2 control-label">작성자</label>
 		    		<div class="col-sm-10">
-		      			<input type="text" class="form-control" id="inputPassword3" placeholder="${content.bId}" name="bId" readonly>
+		      			<input type="text" class="form-control" id="inputPassword3" placeholder="${content.bName}" name="bName" readonly>
 		    		</div>
 		  		</div>
 		  		<div class="form-group">
@@ -34,6 +34,11 @@
 		  		<div class="form-group">
 		    		<label for="inputPassword3" class="col-sm-2 control-label"></label>
 		    		<div class="col-sm-10 text-right">
+						<a href="delete?page=${page}&bType=${bType}"> 
+							<button type="button" class="btn btn-danger">
+								<i class="fa fa-delete" aria-hidden="true"></i>&nbsp;삭제하기
+							</button>
+						</a>
 						<a href="list?page=${page}&bType=${bType}"> 
 							<button type="button" class="btn btn-danger">
 								<i class="fa fa-undo" aria-hidden="true"></i>&nbsp;돌아가기

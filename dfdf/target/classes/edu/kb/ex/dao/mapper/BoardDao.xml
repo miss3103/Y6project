@@ -12,7 +12,7 @@
 	</select>
 	
 	<select id="boardContent" resultType="edu.kb.ex.dto.BoardDto">
-		select bId,bName,bTitle,bDate,bContent from PENSION_BOARD where bId = #{param1} 
+		select * from PENSION_BOARD where bId = #{param1} AND bType= #{param2}
 	</select>
 	
 	<select id="boardCount" resultType="int">
@@ -20,8 +20,12 @@
 	</select>
 	
 	<insert id="writeBoard">
-		insert into PENSION_BOARD(bId,bName,bTitle,bContent,bDate,bType) values(BOARD_TYPE1_SEQ.nextval,#{param1},#{param2},#{param3},sysdate,#{param4})
+		insert into PENSION_BOARD(bId,bName,bTitle,bContent,bDate,bType) values(${param1},#{param2},#{param3},#{param4},sysdate,#{param5})
 	</insert>
+	
+	<select id="boardTypeDto" resultType="edu.kb.ex.dto.BoardTypeDto">
+		select * from BOARD_TYPE where bType=#{param1}
+	</select>
 	
 	
 	<select id="boardcountDao" resultType="edu.kb.ex.dto.ContentDto"> 
