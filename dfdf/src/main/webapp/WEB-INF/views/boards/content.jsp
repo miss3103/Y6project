@@ -34,7 +34,12 @@
 		  		<div class="form-group">
 		    		<label for="inputPassword3" class="col-sm-2 control-label"></label>
 		    		<div class="col-sm-10 text-right">
-						<a href="delete?page=${page}&bType=${bType}"> 
+		    			<a href="updateForm?bId=${content.bId}&page=${page}&bType=${bType}"> 
+							<button type="button" class="btn btn-danger">
+								<i class="fa fa-delete" aria-hidden="true"></i>&nbsp;수정하기
+							</button>
+						</a>
+						<a href="delete?bId=${content.bId}&page=${page}&bType=${bType}"> 
 							<button type="button" class="btn btn-danger">
 								<i class="fa fa-delete" aria-hidden="true"></i>&nbsp;삭제하기
 							</button>

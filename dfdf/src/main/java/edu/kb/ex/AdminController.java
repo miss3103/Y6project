@@ -21,7 +21,7 @@ public class AdminController {
 	private HttpSession httpSession;
 	@Autowired
 	private SqlSession sqlSession;
-
+	
 	
 	@RequestMapping("/login")
 	public String adminLogin(Model model , HttpServletRequest request) {
@@ -35,6 +35,7 @@ public class AdminController {
 	public String adminLogout(Model model , HttpServletRequest request) {
 		if(httpSession!=null) {
 			httpSession.removeAttribute("adminId");
+			httpSession=null;
 		}
 		return "admin/login";
 	}
@@ -76,6 +77,11 @@ public class AdminController {
 	@RequestMapping("/write_board")
 	public String writeBoard(Model model,HttpServletRequest request) {
 		return "admin/boardManager/write";
+	}
+	
+	@RequestMapping("/reservationCheckList")
+	public String reservationCheckList(Model model,HttpServletRequest request) {
+		return "admin/reservationCheck/list";
 	}
 //	@RequestMapping("/update_board")
 //	@RequestMapping("/delete_board")
@@ -139,5 +145,6 @@ public class AdminController {
 //		
 //		return "redirect:list";
 //	}
+
 }
 

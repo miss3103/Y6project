@@ -21,15 +21,13 @@
 		  		<div class="form-group">
 		    		<label for="inputEmail3" class="col-sm-2 control-label">제목</label>
 		    		<div class="col-sm-10">
-		      			<input type="text" class="form-control" id="inputEmail3" placeholder="title"  name="bTitle"
-		      			>
+		      			<input value="${content.bTitle}" type="text" class="form-control" id="inputEmail3" placeholder="title" name="bTitle">
 		    		</div>
 		  		</div>
 		  		<div class="form-group">
 		    		<label for="inputPassword3" class="col-sm-2 control-label">작성자</label>
 		    		<div class="col-sm-10">
-		      			<input type="text" class="form-control" id="inputPassword3" placeholder="writer" name="bName"
-		      			>
+		      			<input type="text" class="form-control" id="inputPassword3" placeholder="writer" value="${content.bName}" name="bName">
 		    		</div>
 		  		</div>
 
@@ -37,15 +35,15 @@
 		    		<label for="inputPassword3" class="col-sm-2 control-label">본문</label>
 		    		<div class="col-sm-10">
 		    			<textarea rows="10" cols="80" name="bContent" placeholder="content" class="form-control">
-		    	
+		    				${content.bContent}
 		    			</textarea>
 		    		</div>
 		  		</div>
 		  		<div class="form-group">
 		    		<label for="inputPassword3" class="col-sm-2 control-label"></label>
 		    		<div class="col-sm-10 text-right">
-						<a href="list?bType=${bType}&page=${page}"><button type="button" class="btn btn-danger">돌아가기</button></a>
-						<input type="submit" value="글 올리기" class="btn btn-primary" />
+						<a href="list?bType=${bType}&page=1"><button type="button" class="btn btn-danger">돌아가기</button></a>
+						<input type="submit" value="수정하기" class="btn btn-primary" />
 					</div>
 		    	</div>
 		  	</div>

@@ -25,8 +25,6 @@ import edu.kb.ex.dao.BoardDao;
 @Controller
 public class HomeController {
 	
-
-	
 	@RequestMapping("/main")
 	public String main() {
 		return "main";
@@ -36,16 +34,11 @@ public class HomeController {
 		return "main";
 	}
 	
-	
 	@RequestMapping("/index")
 	public String index() {
 		
 		return "index";
 	}
-	
-
-	
-
 	
 //	@RequestMapping("/upHit")
 //	public String upHit(HttpServletRequest request, Model model) {

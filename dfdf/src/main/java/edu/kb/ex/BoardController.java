@@ -86,27 +86,49 @@ public class BoardController {
 		return "redirect:list";
 	}
 	
-	
-	@RequestMapping("/c_content")
-	public String c_contentView(HttpServletRequest request, Model model) {
+	@RequestMapping("/updateForm")
+	public String updateForm(HttpServletRequest request, Model model) {
 		BoardDao dao = sqlSession.getMapper(BoardDao.class);
-		model.addAttribute("c_content", dao.c_contentDao(Integer.parseInt(request.getParameter("bId"))));
+		int bId   = Integer.parseInt(request.getParameter("bId"));
+		int bType = Integer.parseInt(request.getParameter("bType"));
+		int page  = Integer.parseInt(request.getParameter("page"));
 		
-		return "c_content";
+		model.addAttribute("content", dao.boardContent(Integer.parseInt(request.getParameter("bId")),bType));
+		model.addAttribute("typeName",dao.boardType(bType));
+		model.addAttribute("bId",bId);
+		model.addAttribute("bType",bType);
+		model.addAttribute("page",page);
+		return "/boards/updateForm";
 	}
-	
-	@RequestMapping("/modify")
+	@RequestMapping("/update")
 	public String modify(HttpServletRequest request, Model model) {
 		BoardDao dao = sqlSession.getMapper(BoardDao.class);
-		dao.modifyDao(request.getParameter("bName"),request.getParameter("bTitle"),request.getParameter("bContent"),Integer.parseInt(request.getParameter("bId")));
 		
-		return "redirect:list";
+		int bType = Integer.parseInt(request.getParameter("bType"));
+		int page  = Integer.parseInt(request.getParameter("page"));
+		int bId   = Integer.parseInt(request.getParameter("bId"));
+
+		String bName = request.getParameter("bName");
+		String bTitle = request.getParameter("bTitle");
+		String bContent = request.getParameter("bContent");
+		
+		model.addAttribute("bId",bId);
+		model.addAttribute("bType",bType);
+		model.addAttribute("page",page);
+		model.addAttribute("content", dao.updateBoard(bId, bType,bName,bTitle,bContent));
+		
+		return "redirect:content";
 	}
 	
 	@RequestMapping("/delete")
 	public String delete(HttpServletRequest request, Model model) {
 		BoardDao dao = sqlSession.getMapper(BoardDao.class);
-		dao.deleteDao(request.getParameterValues("lists"));
+		int bType = Integer.parseInt(request.getParameter("bType"));
+		int page  = Integer.parseInt(request.getParameter("page"));
+		int bId   = Integer.parseInt(request.getParameter("bId"));
+		dao.deleteBoard(bId,bType);
+		model.addAttribute("bType",bType);
+		model.addAttribute("page",page);
 		
 		return "redirect:list";
 	}
